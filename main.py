@@ -31,24 +31,24 @@ for filename in os.listdir(folder):
             continue
 
         hips_label = classify_by_hip_distance(landmarks)
-        # print(hips_label)
+        print(hips_label)
 
         # show image
-        # cv2.imshow("image", img)
+        cv2.imshow("image", img)
 
-        # with mp_pose.Pose(
-        #     static_image_mode=True,
-        #     model_complexity=2,
-        #     enable_segmentation=True,
-        #     min_detection_confidence=0.5,
-        # ) as pose:
-        #     image_height, image_width, _ = img.shape
-        #     # Convert the BGR image to RGB before processing.
-        #     results = pose.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+        with mp_pose.Pose(
+            static_image_mode=True,
+            model_complexity=2,
+            enable_segmentation=True,
+            min_detection_confidence=0.5,
+        ) as pose:
+            image_height, image_width, _ = img.shape
+            # Convert the BGR image to RGB before processing.
+            results = pose.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
 
-        #     mp_drawing.plot_landmarks(
-        #         results.pose_world_landmarks, mp_pose.POSE_CONNECTIONS
-        #     )
+            mp_drawing.plot_landmarks(
+                results.pose_world_landmarks, mp_pose.POSE_CONNECTIONS
+            )
 
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
